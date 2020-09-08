@@ -1,5 +1,6 @@
+
 <template>
-    <main>
+    <main :style="{width:'100%',height:'100%'}">
         <hualin-header></hualin-header>
         <hualinContent></hualinContent>
     </main>

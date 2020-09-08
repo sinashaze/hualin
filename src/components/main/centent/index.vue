@@ -1,44 +1,51 @@
 <template>
-    <Carousel
-        v-model="value3"
-        :autoplay="setting.autoplay"
-        :autoplay-speed="setting.autoplaySpeed"
-        :dots="setting.dots"
-        :radius-dot="setting.radiusDot"
-        :trigger="setting.trigger"
-        :arrow="setting.arrow">
-        <CarouselItem>
-            <div class="demo-carousel">1</div>
-        </CarouselItem>
-        <CarouselItem>
-            <div class="demo-carousel">2</div>
-        </CarouselItem>
-        <CarouselItem>
-            <div class="demo-carousel">3</div>
-        </CarouselItem>
-        <CarouselItem>
-            <div class="demo-carousel">4</div>
-        </CarouselItem>
-        <CarouselItem>
-            <div class="demo-carousel">5</div>
-        </CarouselItem>
-    </Carousel>
+  <div class="swiperBox">
+    <swiper class="swiper" :options="enterpriseOption">
+      <swiper-slide v-for="(item,index) in swiperList" :key="index">
+        <div class="swiperBg">
+          <img :src="item" alt="图片" />
+        </div>
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+      <!-- <div class="swiper-scrollbar" slot="scrollbar"></div> -->
+    </swiper>
+  </div>
 </template>
 
 <script>
-    export default {
-        data () {
-            return {
-                value3: 0,
-                setting: {
-                    autoplay: false,
-                    autoplaySpeed: 2000,
-                    dots: 'inside',
-                    radiusDot: false,
-                    trigger: 'click',
-                    arrow: 'hover'
-                }
-            }
+import "swiper/dist/css/swiper.css";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
+import '../index.less'
+export default {
+  data() {
+    return {
+      enterpriseOption: {
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          bulletElement: "li",
         },
-    }
+        direction: "vertical",
+        speed: 500,
+  
+        parallax: true,
+        mousewheel: true,
+        // scrollbar: {
+        //   el: ".swiper-scrollbar",
+        //   hide: false
+        // }
+      },
+      swiperList: [
+        "http://img1.qunarzz.com/piao/fusion/1805/d4/d41d77b6ba8aca02.jpg_750x200_ac3d9a73.jpg",
+        "http://img1.qunarzz.com/piao/fusion/1805/d4/d41d77b6ba8aca02.jpg_750x200_ac3d9a73.jpg",
+        "http://img1.qunarzz.com/piao/fusion/1805/d4/d41d77b6ba8aca02.jpg_750x200_ac3d9a73.jpg",
+        "http://img1.qunarzz.com/piao/fusion/1805/d4/d41d77b6ba8aca02.jpg_750x200_ac3d9a73.jpg",
+      ],
+    };
+  },
+  components: {
+    swiper,
+    swiperSlide,
+  },
+};
 </script>
